@@ -1,0 +1,7 @@
+<Solution>
+  <Project Path="CarbonForm.Common/CarbonForm.Common.csproj" />
+  <Project Path="CarbonForm.Core/CarbonForm.Core.csproj" />
+  <Project Path="CarbonForm.Data/CarbonForm.Data.csproj" />
+  <Project Path="CarbonForm.Service/CarbonForm.Service.csproj" />
+  <Project Path="CarbonForm.Web/CarbonForm.Web.csproj" />
+</Solution>

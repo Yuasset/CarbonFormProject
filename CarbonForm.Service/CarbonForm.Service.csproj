@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CarbonForm.Common\CarbonForm.Common.csproj" />
+    <ProjectReference Include="..\CarbonForm.Core\CarbonForm.Core.csproj" />
+    <ProjectReference Include="..\CarbonForm.Data\CarbonForm.Data.csproj" />
+  </ItemGroup>
+
+</Project>
