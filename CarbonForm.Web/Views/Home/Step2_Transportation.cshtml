@@ -1,0 +1,95 @@
+﻿@{
+    ViewData["Title"] = "Adım 2: Ulaşım Bilgileri";
+}
+
+<div class="card shadow">
+    <div class="card-header bg-success text-white">
+        <h4>2. Ulaşım Alışkanlıkları</h4>
+    </div>
+    <div class="card-body">
+        <form id="step2Form">
+            <h5 class="text-secondary border-bottom pb-2">Günlük Ulaşım</h5>
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label class="form-label">İşe/Okula Nasıl Gidiyorsunuz?</label>
+                    <select name="CommuteType" class="form-select" asp-items="Html.GetEnumSelectList<CommuteType>()">
+                        <option value="">Seçiniz...</option>
+                    </select>
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">Günlük Mesafe (Gidiş-Geliş Toplam KM)</label>
+                    <input type="number" name="CommuteDistanceKm" class="form-control" value="0" />
+                </div>
+            </div>
+
+            <h5 class="text-secondary border-bottom pb-2 mt-4">Yıllık Seyahatler</h5>
+
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label class="fw-bold">Yurtiçi Uçuş</label>
+                    <div class="input-group mb-2">
+                        <span class="input-group-text">Adet</span>
+                        <input type="number" name="FlightDomesticCount" class="form-control" placeholder="Kaç kez?" value="0" />
+                    </div>
+                    <div class="input-group">
+                        <span class="input-group-text">KM</span>
+                        <input type="number" name="FlightDomesticKm" class="form-control" placeholder="Toplam KM" value="0" />
+                    </div>
+                    <div class="form-text text-muted">* 1 Uçuş ortalama 1000 KM hesaplanır.</div>
+                </div>
+
+                <div class="col-md-6">
+                    <label class="fw-bold">Yurtdışı Uçuş</label>
+                    <div class="input-group mb-2">
+                        <span class="input-group-text">Adet</span>
+                        <input type="number" name="FlightInternationalCount" class="form-control" placeholder="Kaç kez?" value="0" />
+                    </div>
+                    <div class="input-group">
+                        <span class="input-group-text">KM</span>
+                        <input type="number" name="FlightInternationalKm" class="form-control" placeholder="Toplam KM" value="0" />
+                    </div>
+                    <div class="form-text text-muted">* 1 Uçuş ortalama 3000 KM hesaplanır.</div>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label class="fw-bold">Şehirlerarası Araba Yolculuğu</label>
+                    <div class="input-group">
+                        <span class="input-group-text">KM</span>
+                        <input type="number" name="CarTravelKm" class="form-control" value="0" />
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <label class="fw-bold">Otobüs / Tren Yolculuğu</label>
+                    <div class="input-group">
+                        <span class="input-group-text">KM</span>
+                        <input type="number" name="PublicTransportTravelKm" class="form-control" value="0" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="d-flex justify-content-between mt-4">
+                <a href="/Home/Step1_UserInfo" class="btn btn-secondary">Geri</a>
+                <button type="button" class="btn btn-primary" onclick="submitStep()">Devam Et</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            SurveyManager.loadForm('step2_data');
+        });
+
+        function submitStep() {
+            SurveyManager.validateAndNext(
+                '#step2Form',
+                'step2_data',
+                '/Home/ValidateStep2',
+                '/Home/Step3_HomeEnergy'
+            );
+        }
+    </script>
+}

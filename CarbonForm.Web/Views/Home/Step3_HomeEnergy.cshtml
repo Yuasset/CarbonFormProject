@@ -1,0 +1,102 @@
+﻿@{
+    ViewData["Title"] = "Adım 3: Ev ve Enerji";
+}
+
+<div class="card shadow">
+    <div class="card-header bg-warning text-dark">
+        <h4>3. Ev Enerjisi ve Atık Yönetimi</h4>
+    </div>
+    <div class="card-body">
+        <form id="step3Form">
+            <h5 class="text-secondary border-bottom pb-2">Aylık Faturalar</h5>
+            <div class="row g-3">
+                <div class="col-md-4">
+                    <label class="form-label text-danger fw-bold">Doğalgaz</label>
+                    <div class="input-group mb-2">
+                        <span class="input-group-text">TL</span>
+                        <input type="number" name="NaturalGasBillAmount" class="form-control" value="0" />
+                    </div>
+                    <div class="input-group">
+                        <span class="input-group-text">m³</span>
+                        <input type="number" name="NaturalGasM3" class="form-control" value="0" />
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <label class="form-label text-warning fw-bold">Elektrik</label>
+                    <div class="input-group mb-2">
+                        <span class="input-group-text">TL</span>
+                        <input type="number" name="ElectricityBillAmount" class="form-control" value="0" />
+                    </div>
+                    <div class="input-group">
+                        <span class="input-group-text">kWh</span>
+                        <input type="number" name="ElectricityKwh" class="form-control" value="0" />
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <label class="form-label text-primary fw-bold">Su</label>
+                    <div class="input-group mb-2">
+                        <span class="input-group-text">TL</span>
+                        <input type="number" name="WaterBillAmount" class="form-control" value="0" />
+                    </div>
+                    <div class="input-group">
+                        <span class="input-group-text">m³</span>
+                        <input type="number" name="WaterM3" class="form-control" value="0" />
+                    </div>
+                </div>
+            </div>
+
+            <h5 class="text-secondary border-bottom pb-2 mt-4">Klima Kullanımı</h5>
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <div class="form-check form-switch mt-4">
+                        <input class="form-check-input" type="checkbox" name="HasAirConditioner" id="acSwitch" value="true">
+                        <label class="form-check-label" for="acSwitch">Klima Kullanıyorum</label>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">Klima Tipi / BTU</label>
+                    <select name="AirConditionerType" class="form-select" asp-items="Html.GetEnumSelectList<AirConditionerType>()">
+                    </select>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Yılda Kaç Gün Kullanıyorsunuz?</label>
+                <input type="number" name="AirConditionerUseDays" class="form-control" value="0" />
+            </div>
+
+            <h5 class="text-secondary border-bottom pb-2 mt-4">Atık Bilgileri</h5>
+            <div class="row">
+                <div class="col-md-6">
+                    <label class="form-label">Haftalık Çöp Miktarı (kg)</label>
+                    <input type="number" name="SolidWasteKg" class="form-control" value="0" />
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">Aracınızı Ayda Kaç Kez Yıkatıyorsunuz?</label>
+                    <input type="number" name="CarWashCount" class="form-control" value="0" />
+                </div>
+            </div>
+
+            <div class="d-flex justify-content-between mt-4">
+                <a href="/Home/Step2_Transportation" class="btn btn-secondary">Geri</a>
+                <button type="button" class="btn btn-primary" onclick="submitStep()">Devam Et</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            SurveyManager.loadForm('step3_data');
+        });
+
+        function submitStep() {
+            SurveyManager.validateAndNext(
+                '#step3Form',
+                'step3_data',
+                '/Home/ValidateStep3',
+                '/Home/Step4_Consumption'
+            );
+        }
+    </script>
+}

@@ -1,0 +1,73 @@
+﻿@{
+    ViewData["Title"] = "Adım 4: Harcamalar";
+}
+
+<div class="card shadow">
+    <div class="card-header bg-info text-white">
+        <h4>4. Tüketim ve Beslenme</h4>
+    </div>
+    <div class="card-body">
+        <form id="step4Form">
+            <h5 class="text-secondary border-bottom pb-2">Aylık Harcamalar (TL)</h5>
+            <div class="row g-3 mb-3">
+                <div class="col-md-6">
+                    <label class="form-label">Kıyafet</label>
+                    <input type="number" name="ClothingExpense" class="form-control" value="0" />
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">Elektronik</label>
+                    <input type="number" name="ElectronicsExpense" class="form-control" value="0" />
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">Kozmetik</label>
+                    <input type="number" name="CosmeticExpense" class="form-control" value="0" />
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">Kişisel Bakım</label>
+                    <input type="number" name="PersonalCareExpense" class="form-control" value="0" />
+                </div>
+            </div>
+
+            <h5 class="text-secondary border-bottom pb-2 mt-4">Beslenme Alışkanlıkları</h5>
+
+            <div class="mb-3">
+                <label class="form-label">Dışarıda Yemek Yeme Sıklığı</label>
+                <select name="EatingOutFrequency" class="form-select" asp-items="Html.GetEnumSelectList<EatingOutFrequency>()">
+                </select>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <label class="form-label">Haftalık Et Tüketimi (kg)</label>
+                    <input type="text" name="MeatConsumptionKg" class="form-control" placeholder="Örn: 1.5" value="0" />
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">Haftalık Sebze/Meyve Tüketimi (kg)</label>
+                    <input type="text" name="VeggieConsumptionKg" class="form-control" placeholder="Örn: 3" value="0" />
+                </div>
+            </div>
+
+            <div class="d-flex justify-content-between mt-4">
+                <a href="/Home/Step3_HomeEnergy" class="btn btn-secondary">Geri</a>
+                <button type="button" class="btn btn-primary" onclick="submitStep()">Sonuçları Gör</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            SurveyManager.loadForm('step4_data');
+        });
+
+        function submitStep() {
+            SurveyManager.validateAndNext(
+                '#step4Form',
+                'step4_data',
+                '/Home/ValidateStep4',
+                '/Home/Step5_Result'
+            );
+        }
+    </script>
+}

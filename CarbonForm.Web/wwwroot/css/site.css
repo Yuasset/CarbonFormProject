@@ -17,9 +17,6 @@ html {
   min-height: 100%;
 }
 
-body {
-  margin-bottom: 60px;
-}
 
 .form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {
   color: var(--bs-secondary-color);
@@ -28,4 +25,19 @@ body {
 
 .form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
   text-align: start;
+}
+
+body {
+    background-image:
+      linear-gradient(rgba(248,249,250,0.85), rgba(248,249,250,0.85)),
+      url('/img/co2notr_logo_bg.png');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    background-size: 50%; 
+    background-color: #f8f9fa; 
+}
+
+.card {
+    background-color: rgba(255, 255, 255, 0.95);
 }

@@ -7,6 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="15.1.0" />
+    <PackageReference Include="FluentValidation" Version="12.1.0" />
+    <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="12.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\CarbonForm.Common\CarbonForm.Common.csproj" />
     <ProjectReference Include="..\CarbonForm.Core\CarbonForm.Core.csproj" />
     <ProjectReference Include="..\CarbonForm.Data\CarbonForm.Data.csproj" />

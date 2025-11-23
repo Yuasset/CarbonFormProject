@@ -1,0 +1,63 @@
+﻿@{
+    ViewData["Title"] = "Adım 1: Kişisel Bilgiler";
+}
+
+<div class="card shadow">
+    <div class="card-header bg-primary text-white">
+        <h4>1. Kişisel Bilgiler</h4>
+    </div>
+    <div class="card-body">
+        <form id="step1Form">
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label class="form-label">Adınız</label>
+                    <input type="text" name="FirstName" class="form-control" />
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">Soyadınız</label>
+                    <input type="text" name="LastName" class="form-control" />
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">E-Posta</label>
+                <input type="email" name="Email" class="form-control" />
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Yaş Aralığı</label>
+                <select name="AgeRange" class="form-select" asp-items="Html.GetEnumSelectList<AgeRange>()">
+                    <option value="">Seçiniz...</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Eğitim Seviyesi</label>
+                <select name="EducationLevel" class="form-select" asp-items="Html.GetEnumSelectList<EducationLevel>()">
+                </select>
+            </div>
+
+            <div class="d-flex justify-content-between mt-4">
+                <a href="/Home/Index" class="btn btn-secondary">Geri</a>
+                <button type="button" class="btn btn-primary" onclick="submitStep()">Devam Et</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            SurveyManager.loadForm('step1_data');
+        });
+
+        function submitStep() {
+            SurveyManager.validateAndNext(
+                '#step1Form',
+                'step1_data',
+                '/Home/ValidateStep1',
+                '/Home/Step2_Transportation'
+            );
+        }
+    </script>
+}

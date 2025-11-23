@@ -1,0 +1,54 @@
+﻿@{
+    ViewData["Title"] = "Sonuç ve Tamamlama";
+}
+
+<div class="text-center mb-5">
+    <img src="/img/co2notr_logo.png" alt="Logo" style="max-height: 100px;" class="mb-3">
+    <h2 class="text-success">Sürdürülebilir Bir Geleceğe Adım Atın!</h2>
+    <p class="lead text-muted">Verilerinizi başarıyla topladık. Sonuçları oluşturmak için lütfen işlemi tamamlayın.</p>
+</div>
+
+<div class="card shadow-lg border-0">
+    <div class="card-body p-5">
+        <h4 class="card-title text-primary">Önerilerimiz</h4>
+        <hr>
+        <ul class="list-unstyled">
+            <li class="mb-3">
+                <strong>🚍 Ulaşımda Seçimler:</strong> Toplu taşıma, yürüyüş veya bisiklet gibi daha sürdürülebilir seçenekleri tercih edin.
+            </li>
+            <li class="mb-3">
+                <strong>💡 Enerji Tüketimi:</strong> Evinizde tasarruflu ampuller kullanın, gereksiz aydınlatmaları kapatın.
+            </li>
+            <li class="mb-3">
+                <strong>♻️ Atık Yönetimi:</strong> Geri dönüşüm alışkanlığı edinin. Tek kullanımlık plastiklerden kaçının.
+            </li>
+            <li class="mb-3">
+                <strong>🥗 Yemek Tercihleri:</strong> Bitkisel bazlı yiyeceklerin karbon ayak izinin daha düşük olduğunu unutmayın.
+            </li>
+        </ul>
+
+        <div class="alert alert-info mt-4">
+            <i class="bi bi-info-circle-fill"></i>
+            Sonuçlarınız hesaplanıp <strong>e-posta adresinize</strong> detaylı bir rapor olarak gönderilecektir.
+        </div>
+
+        <div class="d-grid gap-2 mt-5">
+            <button id="btnFinish" class="btn btn-success btn-lg" onclick="finishSurvey()">
+                <span id="spinner" class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
+                HESAPLAMAYI BİTİR VE GÖNDER
+            </button>
+            <a href="/Home/Step4_Consumption" class="btn btn-outline-secondary">Geri Dön ve Düzenle</a>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        function finishSurvey() {
+            $('#btnFinish').prop('disabled', true);
+            $('#spinner').removeClass('d-none');
+
+            SurveyManager.submitAll();
+        }
+    </script>
+}
