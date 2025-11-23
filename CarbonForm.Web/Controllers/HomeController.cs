@@ -1,5 +1,4 @@
 using System.Diagnostics;
-using CarbonForm.Web.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CarbonForm.Web.Controllers
