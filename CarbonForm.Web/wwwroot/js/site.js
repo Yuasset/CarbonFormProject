@@ -47,8 +47,9 @@
 
             let $input = $form.find('[name="' + name + '"]');
             let type = $input.attr('type');
+            let tagName = $input.prop('tagName').toLowerCase();
 
-            if (type === 'number') {
+            if (type === 'number' || tagName === 'select') {
                 if (value === "") {
                     value = 0;
                 } else {
