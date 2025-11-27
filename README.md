@@ -26,7 +26,7 @@ Proje, sorumlulukların ayrılması (SoC) ilkesine göre 5 ana katmana ayrılmı
 
 ## 🛠️ Kullanılan Teknolojiler ve Kütüphaneler
 
-* **Framework:** .NET 8.0 (ASP.NET Core MVC)
+* **Framework:** .NET 10.0 (ASP.NET Core MVC)
 * **Veritabanı:** MS SQL Server
 * **ORM:** Entity Framework Core (Code-First)
 * **Mapping:** AutoMapper
